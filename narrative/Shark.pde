@@ -11,8 +11,6 @@ class Shark {
     // https://blender.stackexchange.com/questions/47915/when-i-save-something-as-an-obj-file-the-texture-does-not-save-with-it-why
     sharkTexture = loadImage("sharkTexture2.jpg");
     shark = loadShape("GreatWhite.obj");
-    println("Shark1 width = " + shark.width);
-    println("Shark1 height = " + shark.height);    
     shark.setTexture(sharkTexture);
 
     x = random(-300, 300);

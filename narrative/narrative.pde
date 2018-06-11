@@ -4,10 +4,6 @@
  Team: Jostein Barry-Straume, Brian Yu
  Date: 06/10/18
  Sources:
- https://www.howeart.net/shindahiku-fern-pull
- https://processing.org/discourse/beta/num_1221179611.html
- https://www.openprocessing.org/sketch/346369
- https://youtu.be/1CNU3DQclGs?t=2m40s
  https://www.youtube.com/watch?v=6VSaneuiaWs
  https://free3d.com/3d-model/puo-3970-23212.html
  */
@@ -41,10 +37,8 @@ void setup() {
   oceanFloor.resize(width, height);
   background(oceanFloor);
 
-  //sharkTexture = loadImage("sharkTexture2.jpg");
   //octopusTexture = loadImage("OCTOPUS.JPG");
-  //killerWhaleTexture = loadImage("killerWhaleTexture.jpg");
-  //fishTexture = loadImage("fish_texture.png");
+  killerWhaleTexture = loadImage("killerWhaleTexture.jpg");
 
   //// Source:
   //// https://www.processing.org/reference/loadShape_.html
@@ -55,43 +49,18 @@ void setup() {
   ////octopus = loadShape("OCTOPUS.OBJ");
   ////octopus.setTexture(octopusTexture);
 
-  //killerWhale = loadShape("Killer_Whale.obj");
-  //killerWhale.setTexture(killerWhaleTexture);
-  //killerWhale.scale(80);
+  killerWhale = loadShape("Killer_Whale.obj");
+  killerWhale.setTexture(killerWhaleTexture);
+  killerWhale.scale(80);
 
-  //fish = loadShape("fish.obj");
-  //fish.setTexture(fishTexture);
-  //fish.scale(30);
-  
-
-  
-  
   shark1 = new Shark();
   fish1 = new Fish(new PVector (0, -300));
-  println("Fish1 width = " + fish.width);
-  println("Fish1 height = " + fish.height);
-  println("Shark1 width = " + fish.width);
-  println("Shark1 height = " + fish.height);
   ps = new ParticleSystem(new PVector(mouseX, mouseY));
 }
 
 void draw() {
   background(oceanFloor);
   lights();
-  //pushMatrix();
-  //rotateX(PI);
-  //rotateY(theta);
-  //shape(shark, -mouseX, -mouseY);
-  //popMatrix();
-
-  //pushMatrix();
-  //translate(width/2, height/2);
-  //rotateX(PI);
-  //rotateY(theta);
-  //shape(fish, 0, -100);
-  //shape(fish, -100, -200);
-  //shape(fish, -200, -300);
-  //popMatrix();
 
   //shape(killerWhale, 0, 300);
   //shape(octopus, 0, 0);
@@ -103,12 +72,8 @@ void draw() {
 
   
   shark1.move();
-  fish1.update();
-  
-  //shark1.display();
-  //shark1.move();
-  //fish1.display();
-  //fish1.move();
+  //fish1.update();
+
   
   if (shark1.intersect(fish1)){
     fill(0);
@@ -122,11 +87,6 @@ void draw() {
   
 
   theta += .02;
-}
-
-void mouseClicked() {
-  ps.addParticle();
-  //ps.run();
 }
 
 void mouseReleased() {
