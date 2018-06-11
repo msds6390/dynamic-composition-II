@@ -33,17 +33,20 @@ float theta = 0;
 void setup() {
   size(1279, 689, P3D); // Match size of the bikini bottom background image
   noStroke();
+  
   // Source:
   // http://il3.picdn.net/shutterstock/videos/3460097/thumb/1.jpg
   oceanFloor = loadImage("ocean_floor.jpg");
   oceanFloor.resize(width, height);
   //background(oceanFloor);
+  
+  // Source:
+  // http://www.guibingzhuche.com/WDF-853091.html
   bikiniBottom = loadImage("bikini_bottom.jpg");
   //print(bikiniBottom.width, bikiniBottom.height);
   
   // Source:
   // https://www.yobi3d.com/q/3d-model-spongebob-house
-  //squidHouseTexture = loadImage("squidhouse");
   squidHouse = loadShape("squidhouse.obj");
   squidHouse.scale(10);
   
@@ -55,7 +58,6 @@ void setup() {
   // Instantiate the various sea creatures and blood particle system
   shark1 = new Shark();
   killerWhale1 = new KillerWhale();
-  //fish1 = new Fish(new PVector (0, -300));
   ps = new ParticleSystem(new PVector(mouseX, mouseY));
   fishes = new ArrayList<Fish>();
   for (int i = 0; i < 10; i++) {
