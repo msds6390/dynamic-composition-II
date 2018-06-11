@@ -1,5 +1,5 @@
 /*
- MSDS 6390 Assignment 3: Dynamic Composition 1
+ MSDS 6390 Assignment 4: Dynamic Composition 2
  Dynamic Narrative- Attack on Bikini Bottom!
  Team: Jostein Barry-Straume, Brian Yu
  Date: 06/10/18
