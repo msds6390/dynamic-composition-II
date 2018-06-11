@@ -27,6 +27,7 @@ KillerWhale killerWhale1;
 ParticleSystem ps;
 ArrayList<Fish> fishes;
 PShape squidHouse;
+PShape spongebobPineapple;
 
 void setup() {
   size(1000, 1000, P3D);
@@ -42,6 +43,11 @@ void setup() {
   //squidHouseTexture = loadImage("squidhouse");
   squidHouse = loadShape("squidhouse.obj");
   squidHouse.scale(50);
+  
+  // Source:
+  // https://www.models-resource.com/pc_computer/spongebobsquarepantskrabbyquest/model/21884/
+  spongebobPineapple = loadShape("building_pineapple01.obj");
+  spongebobPineapple.scale(5);
   
   // Source:
   // https://www.models-resource.com/resources/big_icons/22/21884.png
@@ -68,6 +74,7 @@ void draw() {
   rotateX(PI);
   rotateY(PI);
   shape(squidHouse, 0, -400);
+  shape(spongebobPineapple, -200, -300);
   popMatrix();
   if (mousePressed == true) {
     ps.addParticle();
