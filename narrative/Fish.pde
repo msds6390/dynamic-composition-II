@@ -6,27 +6,41 @@ class Fish {
   
   // Constructor
   Fish() {
-    fishTexture = loadImage("fish_texture.png");
-    fish = loadShape("fish.obj");
-    fish.setTexture(fishTexture);
-    fish.scale(30);
-    println("Fish1 width = " + fish.width);
-    println("Fish1 height = " + fish.height);
+    //fishTexture = loadImage("fish_texture.png");
+    
+    //fish = loadShape("fish.obj");
+    //fish.setTexture(fishTexture);
+    //fish.scale(30);
+    //println("Fish1 width = " + fish.width);
+    //println("Fish1 height = " + fish.height);
     //x = random(-300, 300);
     //y = random(-300, 300);
     //z = random(-300, 300);
     x = 0;
     y = 0;
     z = 0;
+    
+    fishy = createShape(GROUP);
+    fishTexture = loadImage("fish_texture.png");
+    fish = loadShape("fish.obj");
+    fish.setTexture(fishTexture);
+    fish.scale(30);
+    stroke(10);
+    noFill();
+    translate(width/2 - 20, height/2);
+    fishHitBox = createShape(BOX, 20, 30, 100);
+    //fishy.addChild(fish);
+    fishy.addChild(fishHitBox);
+    fishy.addChild(fish);
   }
   
   void display() {
     pushMatrix();
     translate(width/2, height/2);
     rotateX(PI);
-    rotateY(theta);    
+    rotateY(theta);
     //rotateY(PI);
-    shape(fish, 0, 0);
+    shape(fishy, 0, 0);
     popMatrix();
   }
   
@@ -34,7 +48,7 @@ class Fish {
     pushMatrix();
     translate(width/2, height/2);
     rotateX(PI);
-    rotateY(theta);
+    rotateY(-theta);
     popMatrix();
   }
   

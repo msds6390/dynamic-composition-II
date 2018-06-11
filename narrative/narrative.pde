@@ -26,6 +26,11 @@ PShape fish;
 float theta = 0;
 Shark shark1;
 Fish fish1;
+PShape fishy;
+PShape fishHitBox;
+PShape sharky;
+PShape sharkHitBox;
+ParticleSystem ps;
 
 void setup() {
   size(1000, 1000, P3D);
@@ -58,12 +63,16 @@ void setup() {
   //fish.setTexture(fishTexture);
   //fish.scale(30);
   
+
+  
+  
   shark1 = new Shark();
   fish1 = new Fish();
   println("Fish1 width = " + fish.width);
   println("Fish1 height = " + fish.height);
   println("Shark1 width = " + fish.width);
   println("Shark1 height = " + fish.height);
+  ps = new ParticleSystem(new PVector(width/2, height/2));
 }
 
 void draw() {
@@ -105,6 +114,12 @@ void draw() {
   fish1.display();
   shark1.display();
   
-
+  ps.addParticle();
+  ps.run();
   theta += .02;
+}
+
+void mousePressed() {
+  ps.addParticle();
+  ps.run();
 }
