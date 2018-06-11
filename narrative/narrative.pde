@@ -22,11 +22,9 @@ PShape fish;
 float theta = 0;
 Shark shark1;
 Fish fish1;
-PShape fishy;
-PShape fishHitBox;
-PShape sharky;
-PShape sharkHitBox;
+KillerWhale killerWhale1;
 ParticleSystem ps;
+ArrayList<Fish> fishes;
 
 void setup() {
   size(1000, 1000, P3D);
@@ -37,54 +35,36 @@ void setup() {
   oceanFloor.resize(width, height);
   background(oceanFloor);
 
-  //octopusTexture = loadImage("OCTOPUS.JPG");
-  killerWhaleTexture = loadImage("killerWhaleTexture.jpg");
-
-  //// Source:
-  //// https://www.processing.org/reference/loadShape_.html
-  //// https://blender.stackexchange.com/questions/47915/when-i-save-something-as-an-obj-file-the-texture-does-not-save-with-it-why
-  //shark = loadShape("GreatWhite.obj");
-  //shark.setTexture(sharkTexture);
-
-  ////octopus = loadShape("OCTOPUS.OBJ");
-  ////octopus.setTexture(octopusTexture);
-
-  killerWhale = loadShape("Killer_Whale.obj");
-  killerWhale.setTexture(killerWhaleTexture);
-  killerWhale.scale(80);
-
   shark1 = new Shark();
+  killerWhale1 = new KillerWhale();
   fish1 = new Fish(new PVector (0, -300));
   ps = new ParticleSystem(new PVector(mouseX, mouseY));
+  fishes = new ArrayList<Fish>();
+  for (int i = 0; i < 10; i++) {
+    fishes.add(new Fish(new PVector(random(100, width/2), random(-500, 500))));
+  }  
 }
 
 void draw() {
   background(oceanFloor);
   lights();
-
-  //shape(killerWhale, 0, 300);
-  //shape(octopus, 0, 0);
   
   if (mousePressed == true) {
     ps.addParticle();
     ps.run();  
   }
 
-  
-  shark1.move();
-  //fish1.update();
-
-  
-  if (shark1.intersect(fish1)){
-    fill(0);
-    ellipse(100, 100, 300, 300);
-    print("Intersection!");
+  if (keyPressed) {
+    killerWhale1.display();
+  } else {
+    shark1.display();
   }
+  //fish1.display();
   
-  
-  fish1.display();
-  shark1.display();
-  
+  for (int i = fishes.size() - 1; i >= 0; i--) {
+    Fish fish = fishes.get(i);
+    fish.display();
+  }
 
   theta += .02;
 }

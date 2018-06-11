@@ -1,31 +1,23 @@
 // Source:
 // http://learningprocessing.com/examples/chp10/example-10-03-intersection
-class Shark {
-  
-  float x, y, z;
-  
+class KillerWhale {
   // Constructor
-  Shark() {
+  KillerWhale() {
     // Source:
     // https://www.processing.org/reference/loadShape_.html
     // https://blender.stackexchange.com/questions/47915/when-i-save-something-as-an-obj-file-the-texture-does-not-save-with-it-why
-    sharkTexture = loadImage("sharkTexture2.jpg");
-    shark = loadShape("GreatWhite.obj");
-    shark.setTexture(sharkTexture);
-
-    x = random(-300, 300);
-    y = random(-300, 300);
-    //z = random(-300, 300);
-    z = 0;
+    killerWhaleTexture = loadImage("killerWhaleTexture.jpg");
+    killerWhale = loadShape("Killer_Whale.obj");
+    killerWhale.setTexture(killerWhaleTexture);
+    killerWhale.scale(80);
   }
   
   void display() {
-    //shark.setTexture(sharkTexture);
     pushMatrix();
     translate(0, 0);
     rotateX(PI);
     rotateY(theta);
-    shape(shark, -mouseX, -mouseY);
+    shape(killerWhale, -mouseX, -mouseY);
     popMatrix();
   }
   
@@ -33,7 +25,6 @@ class Shark {
     pushMatrix();
     rotateX(PI);
     rotateY(theta);
-    //rotate(PI);
     popMatrix();
   }
 }

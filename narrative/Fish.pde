@@ -36,7 +36,7 @@ class Fish {
     pushMatrix();
     translate(width/2, height/2);
     rotateX(PI);
-    rotateY(theta);
+    rotateY(-theta);
     shape(fish, position.x, position.y);
     popMatrix();
   }
@@ -47,16 +47,5 @@ class Fish {
     rotateX(PI);
     rotateY(theta);
     popMatrix();
-  }
-  
-
-  
-  boolean intersect(Shark b) {
-    float distance = dist(position.x, position.y, b.x, b.y);
-    if (distance < fish.width * fish.height + shark.width * shark.height) {
-      return true;
-    } else {
-      return false;
-    }
   }
 }

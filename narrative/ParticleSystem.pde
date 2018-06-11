@@ -13,6 +13,8 @@ class ParticleSystem {
     particles.add(new Particle(origin));
   }
   
+  // Source:
+  // https://processing.org/reference/ArrayList.html
   void removeParticles(){
     for (int i = particles.size() - 1; i >= 0; i--) {
       //Particle part = particles.get(i);
