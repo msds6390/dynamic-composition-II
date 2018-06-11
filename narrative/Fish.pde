@@ -3,14 +3,16 @@
 class Fish {
   
   float x, y, z;
+  PVector position;
+  PVector velocity;
+  PVector acceleration;
   
   // Constructor
-  Fish() {
-    //fishTexture = loadImage("fish_texture.png");
-    
-    //fish = loadShape("fish.obj");
-    //fish.setTexture(fishTexture);
-    //fish.scale(30);
+  Fish(PVector l) {
+    fishTexture = loadImage("fish_texture.png");
+    fish = loadShape("fish.obj");
+    fish.setTexture(fishTexture);
+    fish.scale(30);
     //println("Fish1 width = " + fish.width);
     //println("Fish1 height = " + fish.height);
     //x = random(-300, 300);
@@ -20,47 +22,73 @@ class Fish {
     y = 0;
     z = 0;
     
-    fishy = createShape(GROUP);
-    fishTexture = loadImage("fish_texture.png");
-    fish = loadShape("fish.obj");
-    fish.setTexture(fishTexture);
-    fish.scale(30);
-    stroke(10);
-    noFill();
-    translate(width/2 - 20, height/2);
-    fishHitBox = createShape(BOX, 20, 30, 100);
+    acceleration = new PVector(0.0, 0);
+    //velocity = new PVector(random(-1, 1), random(-2, 0));
+    velocity = new PVector(0, 0);
+    position = l.copy();
+    
+    //fishy = createShape(GROUP);
+    //fishTexture = loadImage("fish_texture.png");
+    //fish = loadShape("fish.obj");
+    //fish.setTexture(fishTexture);
+    //fish.scale(30);
+    //stroke(10);
+    //noFill();
+    //translate(width/2 - 20, height/2);
+    //fishHitBox = createShape(BOX, 20, 30, 100);
+    ////fishy.addChild(fish);
+    //fishy.addChild(fishHitBox);
     //fishy.addChild(fish);
-    fishy.addChild(fishHitBox);
-    fishy.addChild(fish);
+  }
+  
+  void run() {
+    update();
+    display();
+  }
+  
+  void update() {
+    velocity.add(acceleration);
+    position.add(velocity);
   }
   
   void display() {
+    //pushMatrix();
+    //translate(width/2, height/2);
+    //rotateX(PI);
+    //rotateY(theta);
+    ////rotateY(PI);
+    //shape(fishy, 0, 0);
+    //popMatrix();
+    
     pushMatrix();
     translate(width/2, height/2);
     rotateX(PI);
     rotateY(theta);
-    //rotateY(PI);
-    shape(fishy, 0, 0);
+    shape(fish, position.x, position.y);
     popMatrix();
+    //println("X = " + position.x);
+    //println("Y = " + position.y);
   }
   
   void move() {
     pushMatrix();
     translate(width/2, height/2);
     rotateX(PI);
-    rotateY(-theta);
+    rotateY(theta);
     popMatrix();
   }
   
 
   
   boolean intersect(Shark b) {
-    float distance = dist(this.x, this.y, this.z, b.x, b.y, b.z);
+    float distance = dist(position.x, position.y, b.x, b.y);
     
     if (distance < fish.width * fish.height + shark.width * shark.height) {
       return true;
     } else {
       return false;
     }
+    
+    
   }
 }

@@ -1,3 +1,5 @@
+// Source:
+// https://processing.org/examples/simpleparticlesystem.html
 class ParticleSystem {
   ArrayList<Particle> particles;
   PVector origin;
@@ -9,6 +11,14 @@ class ParticleSystem {
 
   void addParticle() {
     particles.add(new Particle(origin));
+  }
+  
+  void removeParticles(){
+    for (int i = particles.size() - 1; i >= 0; i--) {
+      //Particle part = particles.get(i);
+      particles.remove(i);
+      
+    }    
   }
 
   void run() {

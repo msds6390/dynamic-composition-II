@@ -67,12 +67,12 @@ void setup() {
   
   
   shark1 = new Shark();
-  fish1 = new Fish();
+  fish1 = new Fish(new PVector (0, -300));
   println("Fish1 width = " + fish.width);
   println("Fish1 height = " + fish.height);
   println("Shark1 width = " + fish.width);
   println("Shark1 height = " + fish.height);
-  ps = new ParticleSystem(new PVector(width/2, height/2));
+  ps = new ParticleSystem(new PVector(mouseX, mouseY));
 }
 
 void draw() {
@@ -96,8 +96,14 @@ void draw() {
   //shape(killerWhale, 0, 300);
   //shape(octopus, 0, 0);
   
+  if (mousePressed == true) {
+    ps.addParticle();
+    ps.run();  
+  }
+
+  
   shark1.move();
-  fish1.move();
+  fish1.update();
   
   //shark1.display();
   //shark1.move();
@@ -114,12 +120,15 @@ void draw() {
   fish1.display();
   shark1.display();
   
-  ps.addParticle();
-  ps.run();
+
   theta += .02;
 }
 
-void mousePressed() {
+void mouseClicked() {
   ps.addParticle();
-  ps.run();
+  //ps.run();
+}
+
+void mouseReleased() {
+  ps.removeParticles();
 }

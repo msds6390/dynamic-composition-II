@@ -23,9 +23,12 @@ class Shark {
   
   void display() {
     //shark.setTexture(sharkTexture);
+    pushMatrix();
+    translate(0, 0);
     rotateX(PI);
     rotateY(theta);
     shape(shark, -mouseX, -mouseY);
+    popMatrix();
   }
   
   void move() {

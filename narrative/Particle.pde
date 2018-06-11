@@ -1,3 +1,5 @@
+// Source:
+// https://processing.org/examples/simpleparticlesystem.html
 class Particle {
   PVector position;
   PVector velocity;
@@ -25,9 +27,15 @@ class Particle {
 
   // Method to display
   void display() {
-    stroke(255, lifespan);
-    fill(255, lifespan);
+    pushMatrix();
+    translate(mouseX, mouseY);
+    // Source:
+    // http://www.colourlovers.com/color/8A0707/Blood_red
+    //stroke(17, 169, 190, lifespan);
+    stroke(138, 7, 7, lifespan);
+    fill(138, 7, 7, lifespan);
     ellipse(position.x, position.y, 8, 8);
+    popMatrix();
   }
 
   // Is the particle still useful?
