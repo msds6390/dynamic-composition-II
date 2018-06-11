@@ -15,6 +15,7 @@ PImage sharkTexture;
 PImage octopusTexture;
 PImage killerWhaleTexture;
 PImage fishTexture;
+PImage spongeBobHouse;
 PShape shark;
 PShape octopus;
 PShape killerWhale;
@@ -25,6 +26,7 @@ Fish fish1;
 KillerWhale killerWhale1;
 ParticleSystem ps;
 ArrayList<Fish> fishes;
+PShape squidHouse;
 
 void setup() {
   size(1000, 1000, P3D);
@@ -34,6 +36,17 @@ void setup() {
   oceanFloor = loadImage("ocean_floor.jpg");
   oceanFloor.resize(width, height);
   background(oceanFloor);
+  
+  // Source:
+  // https://www.yobi3d.com/q/3d-model-spongebob-house
+  //squidHouseTexture = loadImage("squidhouse");
+  squidHouse = loadShape("squidhouse.obj");
+  squidHouse.scale(50);
+  
+  // Source:
+  // https://www.models-resource.com/resources/big_icons/22/21884.png
+  spongeBobHouse = loadImage("spongebob_house.png");
+  
 
   shark1 = new Shark();
   killerWhale1 = new KillerWhale();
@@ -41,14 +54,21 @@ void setup() {
   ps = new ParticleSystem(new PVector(mouseX, mouseY));
   fishes = new ArrayList<Fish>();
   for (int i = 0; i < 10; i++) {
-    fishes.add(new Fish(new PVector(random(100, width/2), random(-500, 500))));
+    fishes.add(new Fish(new PVector(random(200, width/2), random(-500, 500))));
   }  
 }
 
 void draw() {
   background(oceanFloor);
+  //image(spongeBobHouse, 500, 500, width/8, height/8);
   lights();
   
+  pushMatrix();
+  translate(width/2, height/2);
+  rotateX(PI);
+  rotateY(PI);
+  shape(squidHouse, 0, -400);
+  popMatrix();
   if (mousePressed == true) {
     ps.addParticle();
     ps.run();  
@@ -66,6 +86,7 @@ void draw() {
     fish.display();
   }
 
+  
   theta += .02;
 }
 

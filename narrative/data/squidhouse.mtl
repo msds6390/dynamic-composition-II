@@ -1,0 +1,47 @@
+# Material file for squidhouse.obj
+
+newmtl mesh0193mat
+	Ns 0
+	d 1
+	illum 2
+	Kd 0.8 0.8 0.8
+	Ks 0.0 0.0 0.0
+	Ka 0.0 0.0 0.0
+	map_Kd t0193_0.png
+
+newmtl mesh0194mat
+	Ns 0
+	d 1
+	illum 2
+	Kd 0.8 0.8 0.8
+	Ks 0.0 0.0 0.0
+	Ka 0.0 0.0 0.0
+	map_Kd t0194_0.png
+
+newmtl mesh0195mat
+	Ns 0
+	d 1
+	illum 2
+	Kd 0.8 0.8 0.8
+	Ks 0.0 0.0 0.0
+	Ka 0.0 0.0 0.0
+	map_Kd t0195_0.png
+
+newmtl mesh0196mat
+	Ns 0
+	d 1
+	illum 2
+	Kd 0.8 0.8 0.8
+	Ks 0.0 0.0 0.0
+	Ka 0.0 0.0 0.0
+	map_Kd t0196_0.png
+
+newmtl mesh0197mat
+	Ns 0
+	d 1
+	illum 2
+	Kd 0.8 0.8 0.8
+	Ks 0.0 0.0 0.0
+	Ka 0.0 0.0 0.0
+	map_Kd t0197_0.png
+
